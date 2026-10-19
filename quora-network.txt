@@ -1,0 +1,39 @@
+! Quora Ad Shield — Network Companion List (v1.0.0, 2026-10-19)
+! For Orion's built-in content blocker:
+!   iOS: Settings → Content Blockers → Manage Content Blocker → Add New → paste raw URL
+!   macOS: Orion → Settings → Privacy → Manage Filter Lists → +
+! Syntax: Adblock Plus style (Orion standard). No uBO procedural syntax.
+!
+! ---- Third-party ad / tracking domains seen serving into Quora pages ----
+! (Global rules; they duplicate EasyList coverage so the list is self-sufficient
+!  even if Orion's default lists are disabled.)
+||doubleclick.net^
+||amazon-adsystem.com^
+||btloader.com^
+||googlesyndication.com^
+||googletagservices.com^
+||googleads.g.doubleclick.net^
+!
+! ---- Quora's own ad pixel / ad tracking host ----
+! q.quora.com serves the Quora Pixel (advertiser conversion tracking).
+! If anything on quora.com breaks, remove this line first.
+||q.quora.com^
+!
+! ---- Cosmetic hides that plain CSS/ABP syntax CAN express ----
+! (The extension handles text-matching rules ABP cannot; these are the
+!  fast pre-paint layer. Redundant with the extension on purpose.)
+quora.com##.dom_annotate_google_ad
+quora.com##[class*="dom_annotate_google_ad"]
+quora.com##[class*="dom_annotate_ad_image"]
+quora.com##[class*="dom_annotate_multifeed_bundle_Ad"]
+quora.com##div[id^="div-gpt-ad"]
+quora.com##[id^="div-gpt-ad"]
+quora.com##.AdStory
+quora.com##.AdBundle
+quora.com##.HyperLinkBundle
+!
+! ---- First-party ad endpoints (ADD ONLY WHAT YOU VERIFY) ----
+! Uncomment and complete after checking Orion's network log on a Quora feed.
+! Wrong first-party path rules can break login or the feed itself.
+! ||quora.com/ajax/ads/^
+! ||quora.com/_/ad/^
