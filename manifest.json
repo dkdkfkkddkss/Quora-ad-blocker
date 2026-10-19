@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Quora Ad Shield",
+  "version": "1.0.0",
+  "description": "Blocks promoted answers, feed ads, GPT slots, spam/sexual bait questions and Quora nuisances (login wall, Quora+ upsells, follow nags, app nags). Tuned for Orion on iOS/iPadOS.",
+  "content_scripts": [
+    {
+      "matches": ["*://*.quora.com/*"],
+      "js": ["rules.js", "cosmetic.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "permissions": ["storage"],
+  "action": {
+    "default_title": "Quora Ad Shield",
+    "default_popup": "popup.html"
+  }
+}
